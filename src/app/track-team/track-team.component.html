@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="heading mt-4">
+        <h3>NBA Score Tracking App</h3>
+    </div>
+    <div class="row my-3">
+        <div class="col-md-3">
+            <select class="form-select rounded-0" id="teamSelect" [(ngModel)]="targetTeam">
+                <option hidden selected value="">Select a team</option>
+                <option *ngFor="let team of teamNames" [value]="team.id">{{team.full_name}}</option>
+            </select>
+        </div>
+        <div class="col-md">
+            <button class="btn btn-primary rounded-0" id="trackBtn" (click)="trackTeam()">
+                Track Team
+            </button>
+        </div>
+        <div class="row">
+            <div class="cards" >
+                <div class="card mt-4 px-3"  *ngFor="let team of teamRecords,let i=index">
+                    <div class="card-header row g-0">
+                        <div class="col-md-auto">
+                            <h4 class="card-title">
+                                {{team.name}}[{{team.abbreviation}}]
+                            </h4>
+                            <span>{{team.conference}}ern Conference</span>
+                        </div>
+                        <div class="col-md-auto ms-auto">
+                            <button type="button" class="btn-close btn-sm"  id="remove{{team.abbreviation}}" (click)="removeSelectedTeam(i)"></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row align-items-center" style="flex-wrap: wrap;">
+                            <div class="col-md-7" style="display:grid">
+                                <span class="my-2">Results of past 12 days:</span>
+                                <div class="d-flex" style="gap: 3px;flex-wrap: wrap;">
+                                    <span *ngFor="let res of team.finalResult" class="circle" [ngStyle]="{'background-color': res=='W' ? 'green' : 'red' }" >
+                                        {{res}}
+                                    </span>
+                                </div>
+                                <span class="pt-3">Avg pts scored:&nbsp;<span><b>{{team.avgTeamScored}}</b></span></span>
+                                <span class="pt-1">Avg pts conceded:&nbsp;<span><b>{{team.avgTeamConceded}}</b></span></span><br>
+                            </div>
+                            <div class="col-md-5 ms-auto">
+                                <img src="https://interstate21.com/nba-logos/{{team.abbreviation}}.png" alt="" height="100px">
+                            </div>
+                        </div>
+                        <button class="btn btn-success rounded-0 mt-2" id="results{{team.abbreviation}}" (click)="goToResultsPage(team)" >
+                            See game results > >
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

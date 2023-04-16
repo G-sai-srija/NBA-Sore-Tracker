@@ -1,0 +1,8 @@
+.card {
+    width: 400px;
+    border-radius: 0;
+    background-color: transparent;
+  }
+  .card-header{
+    background-color: transparent;
+  }
