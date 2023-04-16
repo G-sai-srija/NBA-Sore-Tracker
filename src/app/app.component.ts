@@ -8,11 +8,10 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent {
   title = 'NBA-tracker-app';
-  constructor(public api:ApiService){
+  constructor(){
 
   }
   ngOnInit(): void {
-    this.api.getLastTwelveDates();
     
   }
 }

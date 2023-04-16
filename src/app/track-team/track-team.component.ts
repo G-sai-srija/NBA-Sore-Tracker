@@ -43,7 +43,6 @@ export class TrackTeamComponent {
   fetchGameResults(teamID : string){
     this.api.getLast12GameResult(teamID,this.lastTwelveDates).subscribe((result:GameInfo)=>{
       const getTeamDetails= this.teamNames.find((element: ITeamNameDetails) => element.id === Number(this.targetTeam));
-      console.log()
       let tempTeamFinalResult: string[] = [];
       let tempTeamResultScores: IEachResult[]=[];
       let teamScored:number=0
