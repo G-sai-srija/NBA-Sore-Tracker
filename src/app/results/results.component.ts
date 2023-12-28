@@ -21,7 +21,6 @@ export class ResultsComponent {
 
   constructor(private router: Router) {
     this.displayResult = JSON.parse(sessionStorage.getItem('showEachResult')!);
-   
   }
 
 }
